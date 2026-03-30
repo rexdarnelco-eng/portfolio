@@ -1,15 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rexdarnelco-eng | Portfolio</title>
     <style>
-        body { background-color: #121212; color: #00ff00; font-family: monospace; padding: 50px; }
-        h1 { border-bottom: 2px solid #00ff00; display: inline-block; }
+        /* --- THEME COLORS --- */
+        :root {
+            --bg-color: #0d1117;       /* Deep Dark Blue/Black */
+            --card-bg: #161b22;        /* Lighter Dark for boxes */
+            --accent-color: #58a6ff;   /* Sleek Developer Blue */
+            --text-main: #c9d1d9;      /* Soft White */
+            --text-dim: #8b949e;       /* Gray for details */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #30363d;
+        }
+
+        h1 { color: var(--accent-color); margin-bottom: 5px; }
+        .subtitle { color: var(--text-dim); font-style: italic; }
+
+        /* --- PROJECTS SECTION --- */
+        .project-container {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .project-title {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .project-tag {
+            background: #238636; /* Green for "Live" feel */
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome, I am rexdarnelco-eng</h1>
-    <p>> Building my portfolio from Termux...</p>
-    <p>> Status: Online</p>
+
+    <header>
+        <h1>rexdarnelco-eng</h1>
+        <p class="subtitle">Full-Stack Mobile Development | Termux Power User</p>
+    </header>
+
+    <div class="project-container">
+        <h2>📂 My Projects</h2>
+
+        <div class="project-card">
+            <div class="project-title">Project One: Mobile Portfolio <span class="project-tag">Live</span></div>
+            <p>A sleek portfolio website built and deployed entirely using a smartphone via Termux and Git.</p>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">Tools: HTML, CSS, Git, Termux</p>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Project Two: Image Processing Hub</div>
+            <p>Specialized workflow for high-fidelity background removal and product cataloging.</p>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">Tools: Photoshop, PSD Automation</p>
+        </div>
+    </div>
+
 </body>
 </html>
+>
