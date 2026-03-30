@@ -67,35 +67,66 @@
             font-size: 0.7rem;
             text-transform: uppercase;
         }
-    </style>
-</head>
+<style>
+    :root {
+        --bg: #0d1117;
+        --card: #161b22;
+        --accent: #58a6ff; /* Blue for Dev */
+        --ai-neon: #a371f7; /* Purple for AI */
+        --text: #c9d1d9;
+    }
+
+    body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; }
+    
+    /* --- The Grid System --- */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .project-card {
+        background: var(--card);
+        border: 1px solid #30363d;
+        border-radius: 12px;
+        padding: 15px;
+        transition: 0.3s;
+    }
+
+    .project-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+    
+    /* Special border for AI projects */
+    .ai-card { border: 1px solid var(--ai-neon); }
+
+    video { width: 100%; border-radius: 8px; margin-bottom: 10px; }
+    
+    h2 { border-bottom: 2px solid #30363d; padding-bottom: 10px; margin-top: 40px; }
+</style>
 <body>
+    <h1>rexdarnelco-eng</h1>
+    <p style="color: #8b949e;">> Mobile Developer | AI Specialist</p>
 
-    <header>
-        <h1>rexdarnelco-eng</h1>
-        <p class="subtitle">Full-Stack Mobile Development | Termux Power User</p>
-    </header>
-
-    <div class="project-container">
-        <h2>📂 My Projects</h2j>
-
-        <div class="project-card">
-            <div class="project-title">Project One: Mobile Portfolio <span class="project-tag">Live</span></div>
-            <p>A sleek portfolio website built and deployed entirely using a smartphone via Termux and Git.</p>
-            <p style="font-size: 0.8rem; color: var(--text-dim);">Tools: HTML, CSS, Git, Termux</p>
+    <h2>🎬 AI & Video Works</h2>
+    <div class="grid">
+        <div class="project-card ai-card">
+            <video autoplay loop muted playsinline>
+                <source src="your-video.mp4" type="video/mp4">
+            </video>
+            <div style="color: var(--ai-neon); font-weight: bold;">AI Generative Reel</div>
+            <p style="font-size: 0.9rem;">Neural rendering and prompt-based cinematography.</p>
+        </div>
         </div>
 
+    <h2>💻 Digital & Dev</h2>
+    <div class="grid">
         <div class="project-card">
-            <div class="project-title">Project Two: Editor Showreel 2026</div>
-<video width="100%" height="auto" autoplay loop muted playsinline style="border-radius: 8px; margin-top: 10px;">
-    <source src="lv_0_20260330215646.mp4" type="video/mp4">
-</video>
-
-            <p>Specialized workflow for high-fidelity background removal and product cataloging.</p>
-            <p style="font-size: 0.8rem; color: var(--text-dim);">Tools: Photoshop, PSD Automation</p>
+            <div style="color: var(--accent); font-weight: bold; font-size: 1.2rem;">Image Processing Hub</div>
+            <p style="font-size: 0.9rem;">High-fidelity background removal and PSD automation.</p>
+        </div>
+        <div class="project-card">
+            <div style="color: var(--accent); font-weight: bold; font-size: 1.2rem;">Termux Portfolio</div>
+            <p style="font-size: 0.9rem;">Full-stack mobile deployment via Git.</p>
         </div>
     </div>
-
 </body>
-</html>
->
