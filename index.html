@@ -13,7 +13,7 @@
             --text-main: #c9d1d9;
             --text-dim: #8b949e;
             --border: #30363d;
-            --nav-bg: rgba(13, 17, 23, 0.8);
+            --nav-bg: rgba(13, 17, 23, 0.9);
         }
 
         * { box-sizing: border-box; }
@@ -21,19 +21,19 @@
         body {
             background-color: var(--bg);
             color: var(--text-main);
-            font-family: -apple-system, system-ui, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
             scroll-behavior: smooth;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- STICKY NAV --- */
         nav {
             position: sticky;
             top: 0;
             background: var(--nav-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             padding: 15px 0;
@@ -43,7 +43,8 @@
             max-width: 1000px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            gap: 30px;
             font-family: monospace;
             font-size: 0.9rem;
         }
@@ -65,80 +66,91 @@
             animation: fadeIn 1s ease;
         }
 
-        h1 { color: var(--accent-blue); font-size: 3rem; margin: 0; letter-spacing: -1px; }
-        .subtitle { color: var(--text-dim); font-family: monospace; }
+        h1 { color: var(--accent-blue); font-size: 3rem; margin: 0; letter-spacing: 2px; }
+        .subtitle { color: var(--text-dim); font-family: monospace; font-size: 1rem; margin-top: 10px;}
+        .subtitle::after { content: "|"; animation: blink 1s infinite; color: var(--accent-blue); margin-left: 5px;}
+
+        @keyframes blink { 50% { opacity: 0; } }
 
         section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-        h2 { font-size: 1.8rem; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
+        h2 { font-size: 1.8rem; margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
 
-        /* --- GRID SYSTEM --- */
+        /* --- GRID --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
-        /* --- CARDS --- */
+        /* --- CARDS (YouTube Redirects) --- */
         .card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             text-decoration: none;
             color: inherit;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: block;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: var(--accent-purple);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
-        .yt-link {
-            display: inline-block;
+        .card h3 { margin: 15px 0 10px 0; font-size: 1.2rem; color: var(--accent-purple); }
+        .card p { font-size: 0.9rem; color: var(--text-dim); flex-grow: 1; }
+
+        .yt-label {
             margin-top: 15px;
-            color: var(--accent-purple);
+            font-size: 0.8rem;
             font-weight: bold;
-            font-size: 0.9rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
         }
 
-        /* --- SKILLS SECTION --- */
-        .skills-tag-container {
+        /* --- SKILLS --- */
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .skill-tag {
+        .skill-badge {
             background: #21262d;
             border: 1px solid var(--border);
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 0.85rem;
             color: var(--accent-blue);
+            font-family: monospace;
         }
 
-        /* --- CONTACT SECTION --- */
-        .contact-box {
-            background: linear-gradient(145deg, #161b22, #0d1117);
-            padding: 40px;
-            border-radius: 15px;
+        /* --- CONTACT --- */
+        .contact-card {
+            background: linear-gradient(145deg, #1c2128, #0d1117);
+            padding: 50px;
+            border-radius: 16px;
             text-align: center;
             border: 1px solid var(--border);
         }
 
         .btn {
             background: var(--accent-blue);
-            color: #000;
-            padding: 12px 25px;
-            border-radius: 6px;
+            color: #0d1117;
+            padding: 14px 30px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
             margin-top: 20px;
+            transition: 0.3s;
         }
+
+        .btn:hover { opacity: 0.9; transform: scale(1.05); }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -151,8 +163,8 @@
     <nav>
         <div class="nav-content">
             <a href="#about">/about</a>
-            <a href="#video">/video</a>
-            <a href="#dev">/dev</a>
+            <a href="#video">/projects</a>
+            <a href="#skills">/skills</a>
             <a href="#contact">/contact</a>
         </div>
     </nav>
@@ -161,78 +173,68 @@
         
         <header>
             <h1>REX DARNEL</h1>
-            <p class="subtitle">> CS Student | Web Dev | AI Video Specialist</p>
+            <p class="subtitle">> Web Developer | UI Designer | AI Video Editor</p>
         </header>
 
         <section id="about">
-            <h2 class="blue-text">👤 Profile</h2>
-            <div style="max-width: 700px;">
-                <p>I am a <strong>Computer Science student</strong> passionate about merging technical development with high-end digital aesthetics. My workflow revolves around mobile-first development environments like <strong>Termux</strong> and <strong>Acode</strong>, proving that powerful software can be built anywhere.</p>
-                
-                <div class="skills-tag-container">
-                    <span class="skill-tag">Web Development</span>
-                    <span class="skill-tag">UI/UX Design</span>
-                    <span class="skill-tag">AI Generative Video</span>
-                    <span class="skill-tag">Digital Marketing</span>
-                    <span class="skill-tag">GitHub Workflow</span>
-                    <span class="skill-tag">Termux</span>
-                </div>
+            <h2 style="color: var(--accent-blue);">👤 Profile</h2>
+            <div style="max-width: 750px;">
+                <p>I am a <strong>Computer Science student</strong> specializing in high-performance web development and creative AI video production. I specialize in a <strong>mobile-first development workflow</strong>, utilizing tools like Termux and Acode to build and deploy professional-grade software and interfaces from anywhere.</p>
+                <p>My goal is to merge technical coding skills with visual storytelling to create unique digital experiences.</p>
             </div>
         </section>
 
         <section id="video">
-            <h2 style="color: var(--accent-purple);">🎬 Short-form Video Edits</h2>
-            <p style="color: var(--text-dim); margin-bottom: 25px;">Click a card to watch the full project on YouTube.</p>
-            
+            <h2 style="color: var(--accent-purple);">🎬 Featured Video Projects</h2>
             <div class="grid">
-                <a href="YOUR_YOUTUBE_LINK_HERE" class="card" target="_blank">
-                    <div style="height: 150px; background: #000; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
-                        <span style="color: #444;">[ Thumbnail Placeholder ]</span>
-                    </div>
-                    <h3>AI Cinema: 2036</h3>
-                    <p>A narrative experiment using Runway AI and Kling 2.0 to visualize the future.</p>
-                    <span class="yt-lin">Watch on YouTube →</span>
+                
+                <a href="https://youtube.com/shorts/fjWXbFycCJk" class="card" target="_blank">
+                    <h3>Spider-Man Edit</h3>
+                    <p>High-energy visual sync and editing showcase featuring cinematic transitions.</p>
+                    <span class="yt-label">Watch on YouTube →</span>
                 </a>
 
-                <a href="https://youtube.com/shorts/fjWXbFycCJk?si=_CGhIuYvNdCe0lfo" class="card" target="_blank">
-                    <div style="height: 150px; background: #000; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
-                        <span style="color: #444;">[ Thumbnail Placeholder ]</span>
-                    </div>
-                    <h3>Mahashivratri Special</h3>
-                    <p>AI generative reel showcasing emotional storytelling through digital art.</p>
-                    <span class="yt-link">Watch on YouTube →</span>
+                <a href="YOUR_LINK_HERE" class="card" target="_blank">
+                    <h3>AI Generative Reel</h3>
+                    <p>Exploring cinematic AI models and subject isolation workflows.</p>
+                    <span class="yt-label">Watch on YouTube →</span>
                 </a>
-            </div>
+
+                <a href="YOUR_LINK_HERE" class="card" target="_blank">
+                    <h3>2036 Concept</h3>
+                    <p>A narrative experiment using Runway AI and Kling 2.0.</p>
+                    <span class="yt-label">Watch on YouTube →</span>
+                </a>
+
+                </div>
         </section>
 
-        <section id="dev">
-            <h2 class="blue-text">💻 Dev Projects</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Termux Portfolio v1.0</h3>
-                    <p>A ready-to-sell freelancer template built entirely on mobile. Clean code, responsive, and SEO-optimized.</p>
-                    <div style="margin-top: 15px; font-family: monospace; font-size: 0.8rem; color: var(--accent-blue);">GitHub | HTML | CSS</div>
-                </div>
-
-                <div class="card">
-                    <h3>High-Fidelity Image Hub</h3>
-                    <p>Advanced subject isolation workflows for professional product photography catalogs.</p>
-                    <div style="margin-top: 15px; font-family: monospace; font-size: 0.8rem; color: var(--accent-blue);">PS Automation | Design</div>
-                </div>
+        <section id="skills">
+            <h2 style="color: var(--accent-blue);">⚡ Technical Stack</h2>
+            <div class="skills-grid">
+                <span class="skill-badge">HTML5 / CSS3</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">UI/UX Design</span>
+                <span class="skill-badge">Termux</span>
+                <span class="skill-badge">Git / GitHub</span>
+                <span class="skill-badge">Acode</span>
+                <span class="skill-badge">Runway AI</span>
+                <span class="skill-badge">Adobe Premiere</span>
+                <span class="skill-badge">Photoshop</span>
             </div>
         </section>
 
         <section id="contact" style="border-bottom: none;">
-            <div class="contact-box">
-                <h2>Let's Collaborate</h2>
-                <p>Currently open to junior roles, freelance web design, and AI video commissions.</p>
-                <p style="color: var(--text-dim);">rexdarenlco.eng@gmail.com</p>
-                <a href="mailto:rexdarenlco.eng@gmail.com" class="btn">Send an Email</a>
+            <div class="contact-card">
+                <h2>Let's Build Something</h2>
+                <p>Available for freelance projects and collaborations.</p>
+                <p style="color: var(--accent-blue); font-family: monospace;">rexdarenlco.eng@gmail.com</p>
+                <a href="mailto:rexdarenlco.eng@gmail.com" class="btn">Send Email</a>
             </div>
         </section>
 
         <footer>
-            <p>Designed by Rex Darnel | Built with Termux & Acode</p>
+            <p>Designed & Developed by Rex Darnel via Termux & Acode</p>
         </footer>
 
     </div>
