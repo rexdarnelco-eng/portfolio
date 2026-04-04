@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rex Darnel | Digital Creator</title>
     <style>
+            html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
         :root {
             --bg: #0d1117;
             --card: #161b22;
@@ -210,6 +214,24 @@
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
         }
+                function showPage(pageId) {
+            // Hide all pages and show the target
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            // Update Nav link colors
+            document.querySelectorAll('.nav-content a').forEach(link => {
+                link.style.color = 'var(--text-dim)';
+            });
+            
+            // Find the link that was clicked and highlight it
+            const activeLink = Array.from(document.querySelectorAll('.nav-content a'))
+                .find(a => a.getAttribute('onclick')?.includes(pageId));
+            if(activeLink) activeLink.style.color = 'var(--accent-blue)';
+
+            window.scrollTo(0, 0);
+        }
+
     </script>
 </body>
 </html>
