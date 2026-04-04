@@ -3,240 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rexdarnelco-eng | Portfolio</title>
+    <title>Rex Darnel | Portfolio</title>
     <style>
-        /* --- THEME SYSTEM --- */
         :root {
-            --bg: #0d1117;           /* Deep Black/Blue */
-            --card: #161b22;         /* Dark Card Background */
-            --accent-blue: #58a6ff;  /* Developer Blue */
-            --accent-purple: #a371f7; /* AI/Video Purple */
-            --text-main: #c9d1d9;    /* Soft White */
-            --text-dim: #8b949e;     /* Subtle Gray */
-            --border: #30363d;       /* Professional Border */
+            --bg: #0d1117;
+            --card: #161b22;
+            --accent-blue: #58a6ff;
+            --accent-purple: #a371f7;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --border: #30363d;
+            --nav-bg: rgba(13, 17, 23, 0.8);
         }
 
-        /* --- BASIC SETUP --- */
+        * { box-sizing: border-box; }
+
         body {
             background-color: var(--bg);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: -apple-system, system-ui, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .nav-content a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-content a:hover { color: var(--accent-blue); }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
         header {
             text-align: center;
-            padding: 60px 0 40px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 100px 0 60px;
+            animation: fadeIn 1s ease;
         }
 
-        h1 { color: var(--accent-blue); margin: 0; font-size: 2rem; }
-        .subtitle { color: var(--text-dim); font-size: 0.9rem; font-family: monospace; }
+        h1 { color: var(--accent-blue); font-size: 3rem; margin: 0; letter-spacing: -1px; }
+        .subtitle { color: var(--text-dim); font-family: monospace; }
 
-        /* --- LAYOUT GRID --- */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.8rem; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
 
-        h2 {
-            margin-top: 50px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .project-grid {
+        /* --- GRID SYSTEM --- */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        /* --- PROJECT CARDS --- */
+        /* --- CARDS --- */
         .card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 15px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: block;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             border-color: var(--accent-blue);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* Special Neon Glow for AI/Video Section */
-        .video-section .card:hover {
-            border-color: var(--accent-purple);
-        }
-
-        .card-title {
+        .yt-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--accent-purple);
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
 
-        .blue-text { color: var(--accent-blue); }
-        .purple-text { color: var(--accent-purple); }
-
-        /* --- MEDIA STYLES --- */
-        video {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            background: #000;
+        /* --- SKILLS SECTION --- */
+        .skills-tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .tags {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            margin-top: auto;
-            padding-top: 15px;
-            font-family: monospace;
+        .skill-tag {
+            background: #21262d;
+            border: 1px solid var(--border);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
         }
 
-        footer {
+        /* --- CONTACT SECTION --- */
+        .contact-box {
+            background: linear-gradient(145deg, #161b22, #0d1117);
+            padding: 40px;
+            border-radius: 15px;
             text-align: center;
-            padding: 50px;
-            color: var(--text-dim);
-            font-size: 0.8rem;
+            border: 1px solid var(--border);
         }
-       /* --- NEW ANIMATIONS --- */
 
-/* 1. The Entrance Animation */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .btn {
+            background: var(--accent-blue);
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
 
-/* Apply it to the whole container */
-.container {
-    animation: fadeInUp 0.8s ease-out;
-}
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* 2. Hover/Touch Pulse for Cards */
-.card {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        footer { text-align: center; padding: 60px; color: var(--text-dim); font-size: 0.8rem; }
 
-.card:hover {
-    transform: scale(1.03); /* Slight grow effect */
-    box-shadow: 0 0 20px rgba(163, 113, 247, 0.4); /* Purple glow */
-}
-
-/* 3. Blinking Cursor for your Subtitle */
-.subtitle::after {
-    content: "|";
-    animation: blink 1s infinite;
-    margin-left: 5px;
-    color: var(--accent-blue);
-}
-
-@keyframes blink {
-    50% { opacity: 0; }
-}
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="nav-content">
+            <a href="#about">/about</a>
+            <a href="#video">/video</a>
+            <a href="#dev">/dev</a>
+            <a href="#contact">/contact</a>
+        </div>
+    </nav>
+
     <div class="container">
         
         <header>
-    <h1 style="letter-spacing: 2px;">REX DARNEL</h1>
-    <p class="subtitle">> Web Developer | Web Designer | UIX | Video Editor | Writing</p>
-</header>
-        <section class="video-section">
-            <h2 class="purple-text">🎬 Video & AI Showreel</h2>
-            <div class="project-grid">
-                
-                <div class="card">
-    <div class="card-title purple-text">#6</div>
-    <video controls playsinline style="border-radius: 8px; margin-bottom: 15px;">
-        <source src="lv_0_20260331045033.mp4" type="video/mp4">
-    </video>
-    <p>2036.</p>
-    <div class="tags">TOOLS: Runway AI | In Video AI | Kling 2.0 AI</div>
-</div>
-                <div class="card">
-    <div class="card-title purple-text">#5</div>
-    <video controls playsinline style="border-radius: 8px; margin-bottom: 15px;">
-        <source src="lv_0_20260331045533.mp4" type="video/mp4">
-    </video>
-    <p>#Sample Video.</p>
-    <div class="tags">TOOLS: Kling | Premiere | Runway AI</div>
-</div>
-                <div class="card">
-    <div class="card-title purple-text">#4 </div>
-    <video controls playsinline style="border-radius: 8px; margin-bottom: 15px;">
-        <source src="Video by alla_dokova [DVhRDT4iAp2].mp4" type="video/mp4">
-    </video>
-    <p>#Sample Video.</p>
-    <div class="tags">TOOLS: AI Models | Runway AI | In video AI</div>
-</div>
-                <div class="card">
-    <div class="card-title purple-text">RAM Cost $900</div>
-    <video controls playsinline style="border-radius: 8px; margin-bottom: 15px;">
-        <source src="lv_0_20260331045421.mp4" type="video/mp4">
-    </video>
-    <p>#Sample Video.</p>
-    <div class="tags">TOOLS: AI Models | Premiere | Invideo</div>
-</div>
-                <div class="card">
-    <div class="card-title purple-text">New AI Project Name</div>
-    <video controls playsinline style="border-radius: 8px; margin-bottom: 15px;">
-        <source src="Video by storyaimint [DUs-KziDzb5].mp4" type="video/mp4">
-    </video>
-    <p>The Puppy who choose faith over hunger, This Mahashivratri</p>
-    <div class="tags">TOOLS: AI Models | Premiere | Termux</div>
-</div>
-                <div class="card">
-                    <div class="card-title purple-text">AI Generative Reel</div>
-                    <video controls playsinline style="border-radius: 8px; margin-bottom: 15px;">
-    <source src="lv_0_20260330215646.mp4" type="video/mp4">
-</video>
-                    <p>This feels like a Pixar movie...but it was made in hours.</p>
-                    <div class="tags">TOOLS: AI Models | CapCut | Mobile Studio</div>
-                </div>
+            <h1>REX DARNEL</h1>
+            <p class="subtitle">> CS Student | Web Dev | AI Video Specialist</p>
+        </header>
 
+        <section id="about">
+            <h2 class="blue-text">👤 Profile</h2>
+            <div style="max-width: 700px;">
+                <p>I am a <strong>Computer Science student</strong> passionate about merging technical development with high-end digital aesthetics. My workflow revolves around mobile-first development environments like <strong>Termux</strong> and <strong>Acode</strong>, proving that powerful software can be built anywhere.</p>
+                
+                <div class="skills-tag-container">
+                    <span class="skill-tag">Web Development</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">AI Generative Video</span>
+                    <span class="skill-tag">Digital Marketing</span>
+                    <span class="skill-tag">GitHub Workflow</span>
+                    <span class="skill-tag">Termux</span>
                 </div>
+            </div>
         </section>
 
-        <section class="dev-section">
-            <h2 class="blue-text">💻 Digital & Dev Projects</h2>
-            <div class="project-grid">
+        <section id="video">
+            <h2 style="color: var(--accent-purple);">🎬 Video & AI Projects</h2>
+            <p style="color: var(--text-dim); margin-bottom: 25px;">Click a card to watch the full project on YouTube.</p>
+            
+            <div class="grid">
+                <a href="YOUR_YOUTUBE_LINK_HERE" class="card" target="_blank">
+                    <div style="height: 150px; background: #000; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: #444;">[ Thumbnail Placeholder ]</span>
+                    </div>
+                    <h3>AI Cinema: 2036</h3>
+                    <p>A narrative experiment using Runway AI and Kling 2.0 to visualize the future.</p>
+                    <span class="yt-link">Watch on YouTube →</span>
+                </a>
 
+                <a href="YOUR_YOUTUBE_LINK_HERE" class="card" target="_blank">
+                    <div style="height: 150px; background: #000; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: #444;">[ Thumbnail Placeholder ]</span>
+                    </div>
+                    <h3>Mahashivratri Special</h3>
+                    <p>AI generative reel showcasing emotional storytelling through digital art.</p>
+                    <span class="yt-link">Watch on YouTube →</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="dev">
+            <h2 class="blue-text">💻 Dev Projects</h2>
+            <div class="grid">
                 <div class="card">
-                    <div class="card-title blue-text">High-Fidelity Image Hub</div>
-                    <p>Specialized workflow for high-precision subject isolation and background replacement for professional product catalogs.</p>
-                    <div class="tags">TOOLS: Photoshop | PSD Automation</div>
+                    <h3>Termux Portfolio v1.0</h3>
+                    <p>A ready-to-sell freelancer template built entirely on mobile. Clean code, responsive, and SEO-optimized.</p>
+                    <div style="margin-top: 15px; font-family: monospace; font-size: 0.8rem; color: var(--accent-blue);">GitHub | HTML | CSS</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-title blue-text">Termux Portfolio</div>
-                    <p>Full-stack mobile deployment of a personal portfolio built and managed entirely within a Termux environment.</p>
-                    <div class="tags">TOOLS: Termux | Git | HTML/CSS</div>
+                    <h3>High-Fidelity Image Hub</h3>
+                    <p>Advanced subject isolation workflows for professional product photography catalogs.</p>
+                    <div style="margin-top: 15px; font-family: monospace; font-size: 0.8rem; color: var(--accent-blue);">PS Automation | Design</div>
                 </div>
+            </div>
+        </section>
 
+        <section id="contact" style="border-bottom: none;">
+            <div class="contact-box">
+                <h2>Let's Collaborate</h2>
+                <p>Currently open to junior roles, freelance web design, and AI video commissions.</p>
+                <p style="color: var(--text-dim);">rexdarenlco.eng@gmail.com</p>
+                <a href="mailto:rexdarenlco.eng@gmail.com" class="btn">Send an Email</a>
             </div>
         </section>
 
         <footer>
-            <p>Built with ❤️ via Termux & Acode</p>
+            <p>Designed by Rex Darnel | Built with Termux & Acode</p>
         </footer>
 
     </div>
