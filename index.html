@@ -1,164 +1,107 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rex Darnel | Digital Creator</title>
-    <style>
-            html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-        :root {
-            --bg: #0d1117;
-            --card: #161b22;
-            --accent-blue: #00d2ff;
-            --accent-purple: #a371f7;
-            --text-main: #c9d1d9;
-            --text-dim: #8b949e;
-            --border: #30363d;
-            --glass-bg: rgba(13, 17, 23, 0.9);
-        }
-
-        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0; padding: 0; line-height: 1.6; overflow-x: hidden;
-        }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 25px; }
-
-        /* --- NAVIGATION --- */
-        nav {
-            position: sticky; top: 0; background: var(--glass-bg);
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
-            z-index: 1000; padding: 18px 0;
-        }
-        .nav-content { display: flex; justify-content: center; gap: 35px; font-size: 0.9rem; text-transform: lowercase; }
-        .nav-content a { color: var(--text-dim); text-decoration: none; cursor: pointer; }
-        .nav-content a:hover { color: var(--accent-blue); }
-
-        /* --- PAGE ROUTING --- */
-        .page { display: none; min-height: 100vh; animation: fadeIn 0.6s ease; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- HERO --- */
-                /* --- HERO LOGO --- */
-        .hero-logo {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 30px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-logo svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        .hero { text-align: center; padding: 120px 0 80px; }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.2rem); color: var(--accent-blue); margin: 0; font-weight: 800; letter-spacing: -2px; }
-        .hero p { color: var(--text-dim); font-size: 1.1rem; margin-top: 10px; }
-
-        /* --- SECTION STYLES --- */
-        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-        h2 { font-size: 1.8rem; margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
-
-        /* --- RECTANGLE GRID SYSTEM --- */
-        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }
-
-        .card { 
-            background: var(--card); border: 1px solid var(--border); border-radius: 20px; 
-            padding: 30px; text-decoration: none; color: inherit; display: block;
-        }
-        .card:hover { border-color: var(--accent-blue); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1); }
-        .card.vid:hover { border-color: var(--accent-purple); box-shadow: 0 10px 30px rgba(163, 113, 247, 0.1); }
-
-        /* --- SERVICES SECTION --- */
-        .service-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .service-item { padding: 20px; border-left: 2px solid var(--accent-blue); background: rgba(255,255,255,0.02); }
-        .service-item h4 { margin: 0; color: var(--accent-blue); }
-
-        /* --- BACK BUTTON --- */
-        .back-btn {
-            display: inline-block; margin: 40px 0; padding: 12px 24px;
-            border: 1px solid var(--border); border-radius: 12px;
-            color: var(--text-main); text-decoration: none; cursor: pointer;
-            font-weight: 600;
-        }
-        .back-btn:hover { background: var(--border); border-color: var(--accent-blue); }
-
-        /* --- FOOTER & SOCIALS --- */
-        footer { text-align: center; padding: 80px 0; border-top: 1px solid var(--border); }
-        .socials { display: flex; justify-content: center; gap: 25px; margin-bottom: 30px; }
-        .socials a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-        .socials a:hover { color: var(--accent-blue); }
-
-        .btn { background: var(--accent-blue); color: #0d1117; padding: 16px 40px; border-radius: 12px; font-weight: bold; text-decoration: none; display: inline-block; }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 
     <div id="home" class="page active">
         <nav>
             <div class="nav-content">
-                <a onclick="showPage('home')">home</a>
-                <a href="#about">about</a>
-                <a href="#services">services</a>
-                <a onclick="showPage('web-page')">web-works</a>
-                <a onclick="showPage('video-page')">video-works</a>
+                <a onclick="showPage('home')">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a onclick="showPage('web-page')">Web-Works</a>
+                <a onclick="showPage('video-page')">Video-Works</a>
             </div>
         </nav>
 
         <div class="container">
-                        <header class="hero">
+            <header class="hero">
                 <div class="hero-logo">
-                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_10_2)">
+                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M42.5 40V80M42.5 40H60C64.6944 40 68.5 43.8056 68.5 48.5C68.5 53.1944 64.6944 57 60 57H42.5" stroke="#00d2ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M57.5 57L69 80" stroke="#00d2ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        
                         <path d="M60 40H74C82.8366 40 90 47.1634 90 56V64C90 72.8366 82.8366 80 74 80H60M60 40V80" stroke="#a371f7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        
                         <rect x="56" y="56" width="8" height="8" rx="1" fill="#c9d1d9"/>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0_10_2)">
-                        <rect width="120" height="120" fill="white"/>
-                        </clipPath>
-                        </defs>
                     </svg>
                 </div>
                 <h1>REX DARNEL</h1>
-                <p>Web Developer | Web Designer | UI/UX | Video Editor | Writing</p>
+                <p>Frontend Developer | Designer | UI/UX | Video Editor</p>
             </header>
+            
+            <section id="about" class="reveal about-section">
+    <div class="about-wrapper">
+        <div>
+            <h2>Digital Architect & Storyteller</h2>
 
-            <section id="about">
-                <h2 style="color: var(--accent-blue);">Digital Architect & Storyteller</h2>
-                <div style="max-width: 850px; font-size: 1.1rem; color: var(--text-main);">
-                    <p>I specialize in building <strong>high-performance digital experiences</strong> where technical precision meets cinematic art. My work is focused on bridging the gap between functional code and narrative design.</p>
-                    <p>I bring a multifaceted approach to every project—whether I'm architecting a responsive web interface or crafting an emotional cinematic edit. My goal is to deliver digital assets that don't just work, but resonate.</p>
-                    <a href="mailto:rex.darnel.co@gmail.com" class="btn" style="margin-top: 20px;">Let's Collaborate</a>
-                </div>
-            </section>
+            <div class="about-content">
+                <p>
+                    I build digital experiences that are fast, intuitive, and visually precise. 
+                    My focus is on creating interfaces that feel effortless to use while maintaining 
+                    a strong, modern aesthetic that aligns with real-world user behavior.
+                </p>
 
-            <section id="services">
-                <h2 style="color: var(--accent-purple);">Core Services</h2>
-                <div class="service-list">
-                    <div class="service-item"><h4>Web Development</h4><p>Custom landing pages and business solutions.</p></div>
-                    <div class="service-item"><h4>UI/UX Design</h4><p>User-centric interfaces with a dark-mode aesthetic.</p></div>
-                    <div class="service-item"><h4>Cinematic Editing</h4><p>High-fidelity AI video and narrative storytelling.</p></div>
-                    <div class="service-item"><h4>Technical Writing</h4><p>Clear, professional documentation and copy.</p></div>
-                </div>
-            </section>
+                <p>
+                    My work combines frontend development, design thinking, and visual storytelling 
+                    to deliver products that are both functional and impactful. Every project I take 
+                    on is approached with attention to detail, performance, and a clear goal — to 
+                    create something that works flawlessly and stands out.
+                </p>
+                <a href="mailto:rex.darnel.co@gmail.com" class="btn" style="margin-top: 20px;">
+                    Let's Collaborate
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2>Why Work With Me</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>⚡ Performance First</h3>
+            <p>Optimized builds with real-world speed metrics.</p>
+        </div>
+        <div class="card">
+            <h3>🎨 Design + Code</h3>
+            <p>Not just development — full visual storytelling.</p>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="reveal">
+    <h2 style="color: var(--accent-purple);">Core Services</h2>
+
+    <div class="service-list">
+        <div class="service-item">
+            <h4>Web Development</h4>
+            <p>Custom landing pages and performance-driven business solutions.</p>
+        </div>
+
+        <div class="service-item">
+            <h4>UI/UX Design</h4>
+            <p>User-centric interfaces with a focus on modern aesthetic hierarchy.</p>
+        </div>
+
+        <div class="service-item">
+            <h4>Cinematic Editing</h4>
+            <p>High-fidelity video workflows and narrative-driven storytelling.</p>
+        </div>
+
+        <div class="service-item">
+            <h4>Technical Writing</h4>
+            <p>Professional documentation and brand-focused copy for digital products.</p>
+        </div>
+    </div>
+</section>
 
             <section style="text-align: center;">
-                <h2>Explore My Portfolio</h2>
+                <h2>Explore Portfolio</h2>
                 <div class="grid" style="margin-top: 30px;">
                     <div class="card" onclick="showPage('web-page')" style="cursor:pointer">
                         <h3 style="color: var(--accent-blue)">🌐 Web Development Works</h3>
@@ -173,9 +116,9 @@
 
             <footer>
                 <div class="socials">
-                    <a href="https://linkedin.com/in/YOUR-LINK" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/rexdarenlco-eng" target="_blank">GitHub</a>
-                    <a href="https://instagram.com/YOUR-LINK" target="_blank">Instagram</a>
+                    <a href="https://in.linkedin.com/in/rex-darnel-90b42038a" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/rexdarnelco-eng" target="_blank">GitHub</a>
+                    <a href="https://www.instagram.com/at.darnel?igsh=eTQweHJxc2ZibGMw" target="_blank">Instagram</a>
                     <a href="mailto:rex.darnel.co@gmail.com">Email</a>
                 </div>
                 <p style="opacity: 0.6;">© 2026 Rex Darnel | Professional Portfolio</p>
@@ -191,17 +134,17 @@
                 <div class="card">
                     <h3>Freelancer Portfolio v1.0</h3>
                     <p>A responsive, SEO-ready architecture designed for modern freelancer workflows.</p>
-                    <small style="color:var(--accent-blue)">90% AI Collaboration | 10% Rex Oversight</small>
+                    <small style="color:var(--accent-blue)">Production-Ready • SEO Structured • High-Performance Frontend</small>
                 </div>
                 <div class="card">
                     <h3>Digital Identity Hub</h3>
                     <p>High-fidelity centralized landing page for professional link management.</p>
-                    <small style="color:var(--accent-blue)">90% AI Collaboration | 10% Rex Oversight</small>
+                    <small style="color:var(--accent-blue)">Minimal Interface • Fast Navigation • Personal Brand Optimization</small>
                 </div>
                 <div class="card">
                     <h3>Odoo Business Suite</h3>
                     <p>End-to-end professional corporate site designed exclusively on the Odoo platform.</p>
-                    <small style="color:var(--accent-blue)">100% Rex Design (Odoo)</small>
+                    <small style="color:var(--accent-blue)">Enterprise-Oriented • Structured UX • Platform-Specific Design</small>
                 </div>
             </div>
         </div>
@@ -239,26 +182,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-                function showPage(pageId) {
-            // Hide all pages and show the target
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-
-            // Update Nav link colors
-            document.querySelectorAll('.nav-content a').forEach(link => {
-                link.style.color = 'var(--text-dim)';
-            });
-            
-            // Find the link that was clicked and highlight it
-            const activeLink = Array.from(document.querySelectorAll('.nav-content a'))
-                .find(a => a.getAttribute('onclick')?.includes(pageId));
-            if(activeLink) activeLink.style.color = 'var(--accent-blue)';
-
-            window.scrollTo(0, 0);
-        }
-        
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
